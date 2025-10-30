@@ -1,4 +1,4 @@
-# Express.js + AI SDK Example
+# TCC + Express.js + AI SDK Example
 
 You can use the AI SDK in an [Express.js](https://expressjs.com/) server to generate and stream text and objects.
 
@@ -8,6 +8,7 @@ You can use the AI SDK in an [Express.js](https://expressjs.com/) server to gene
 
 ```sh
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+TCC_API_KEY="YOUR_TCC_API_KEY"
 ```
 
 2. Run the following commands from the root directory of the AI SDK repo:
@@ -26,9 +27,5 @@ pnpm dev
 4. Test the endpoint with Curl:
 
 ```sh
-curl -X POST http://localhost:8080
-curl -X POST http://localhost:8080/custom-data-parts
-curl -i http://localhost:8080/chat \
- -H "Content-Type: application/json" \
- --data '{ "messages":[{"role":"user","id":"msg1","parts":[{"type":"text","text":"who are you?"}]}]}'
+curl http://localhost:8080
 ```

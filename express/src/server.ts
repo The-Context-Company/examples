@@ -1,14 +1,22 @@
 import { openai } from "@ai-sdk/openai";
-import { streamText } from "ai";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { tcc } from "./tcc.js";
+import * as ai from "ai";
 
-import "dotenv/config";
+import { initLogger, wrapAISDK } from "braintrust";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+// TCC is completely compatible with Braintrust.
+initLogger({
+  projectName: "My AI Project",
+  apiKey: process.env.BRAINTRUST_API_KEY,
+});
+
+const { streamText } = wrapAISDK(ai);
 
 tcc.start();
 

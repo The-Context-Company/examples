@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "3.0.0-beta.45",
-    "@contextcompany/otel": "1.0.2",
+    "@contextcompany/otel": "1.0.3",
     "ai": "6.0.0-beta.84",
     "cors": "^2.8.5",
     "dotenv": "16.4.5",

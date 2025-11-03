@@ -1,7 +1,7 @@
 {
   "name": "@example/express",
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "private": true,
   "scripts": {
     "dev": "tsx src/server.ts",
@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "3.0.0-beta.45",
-    "@contextcompany/otel": "1.0.3",
+    "@contextcompany/otel": "1.0.4",
+    "@types/cors": "^2.8.19",
     "ai": "6.0.0-beta.84",
     "cors": "^2.8.5",
     "dotenv": "16.4.5",

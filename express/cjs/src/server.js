@@ -1,18 +1,19 @@
-import { openai } from "@ai-sdk/openai";
-import { streamText } from "ai";
-import express, { Request, Response } from "express";
-import cors from "cors";
-import { tcc } from "./tcc.js";
+const { openai } = require("@ai-sdk/openai");
+const { streamText } = require("ai");
+const express = require("express");
+const cors = require("cors");
+const { tcc } = require("./tcc.js");
 
-import "dotenv/config";
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+// start collecting AI SDK related telemetry
 tcc.start();
 
-app.get("/", async (req: Request, res: Response) => {
+app.get("/", async (req, res) => {
   const result = streamText({
     model: openai("gpt-4o"),
     prompt: "Why did the chicken cross the road?",
@@ -27,7 +28,7 @@ app.listen(8080, () => {
   console.log(`Example app listening on port ${8080}`);
 });
 
-process.on("SIGINT", () => {
-  tcc.shutdown();
+process.on("SIGINT", async () => {
+  await tcc.shutdown(); // this will immediately export any unexported spans
   process.exit(0);
 });
